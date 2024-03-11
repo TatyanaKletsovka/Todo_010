@@ -6,6 +6,7 @@ from todo.error_messages import (
     DESCRIPTION_LENGTH_ERROR,
 )
 from todo.models.task_models import Task
+from todo.serializers.subtask_serializers import SubTaskPreviewSerializer
 
 
 def validate_fields(attrs):
@@ -28,6 +29,7 @@ def validate_fields(attrs):
 
 
 class TaskInfoSerializer(serializers.ModelSerializer):
+    subtasks = SubTaskPreviewSerializer(many=True, read_only=True)
     category = serializers.StringRelatedField()
 
     class Meta:
@@ -38,6 +40,7 @@ class TaskInfoSerializer(serializers.ModelSerializer):
             'description',
             'category',
             'created_at',
+            'subtasks'
         ]
 
     def validate(self, attrs):

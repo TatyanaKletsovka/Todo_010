@@ -77,3 +77,10 @@ class SubTaskInfoSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         return validate_fields(attrs=attrs)
+
+
+class SubTaskPreviewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SubTask
+        fields = ['id', 'title']
