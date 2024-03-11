@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('categories/', include('todo.urls.category_urls')),
     path('task/', include('todo.urls.task_urls')),
+    path('subtask/', include('todo.urls.subtask_urls')),
 ]
